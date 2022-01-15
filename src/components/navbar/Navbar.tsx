@@ -15,7 +15,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import HomeIcon from '@mui/icons-material/Home';
 import {Button, Grid} from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -169,6 +171,16 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
+          <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              sx={{ mr: 2 }}
+              component={RouterLink} to={"/"}
+          >
+            <HomeIcon />
+          </IconButton>
           <Typography
             variant="h6"
             noWrap
@@ -186,9 +198,9 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Grid container justifyContent="flex-end">
-            <Button color="inherit">Sign in</Button>
-            <Button color="inherit">Register</Button>
+          <Grid container justifyContent="flex-end" color={"inherit"}>
+            <Button component={RouterLink} to={"/signIn"} variant={"contained"} color={"primary"}>Sign in</Button>
+            <Button component={RouterLink} to={"/signIn"} variant={"contained"} color={"primary"}>Register</Button>
           </Grid>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
