@@ -15,14 +15,14 @@ const Map: FC = () => {
 
 
   // GET CURRENT LOCATION
-  // const coordinates = { lat: 52.40050890143135, lng : 16.909968708057384};
-  // if (navigator.geolocation) {
-  //   navigator.geolocation.getCurrentPosition(pos => showPosition(pos));
-  // }
+  const coordinates = { lat: 52.40050890143135, lng: 16.909968708057384 };
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(pos => showPosition(pos));
+  }
 
-  // function showPosition(position:any) {
-  //   console.warn(position.coords.latitude,position.coords.longitude)
-  // }
+  function showPosition(position: any) {
+    console.warn(position.coords.latitude, position.coords.longitude)
+  }
 
   return (
     <div className={styles.mapContainer}>
