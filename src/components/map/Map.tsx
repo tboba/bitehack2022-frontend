@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import GoogleMapReact from 'google-map-react';
-import MoreIcon from '@mui/icons-material/MoreVert';
 
 import styles from './Map.module.scss';
 import {MapItem} from "./MapItem";
@@ -21,8 +20,8 @@ const Marker: FC<MarkerProps> = ({item}) => {
 
     return (
         <div className={styles.markerContainer} >
-            <Paper elevation={3} className={styles.paper}>
-                <Typography className={styles.typography} variant={"subtitle1"} gutterBottom>
+            <Paper elevation={3} className={styles.markerContent}>
+                <Typography variant={"subtitle1"} gutterBottom>
                     {item.title}
                 </Typography>
                 <img className={styles.markerImage}
