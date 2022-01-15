@@ -187,7 +187,7 @@ export default function Navbar() {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' } }}
           >
-            MUI
+            KRYSTIAN BYK
           </Typography>
           <Search>
             <SearchIconWrapper>

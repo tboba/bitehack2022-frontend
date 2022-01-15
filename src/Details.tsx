@@ -1,6 +1,6 @@
 import Navbar from "./components/navbar/Navbar";
 import Map from './components/map/Map';
-import { items } from "./Home";
+import data from "./data";
 
 import styles from './Details.module.scss';
 import ProductDetails from "./components/product-details/ProductDetails";
@@ -11,7 +11,7 @@ const Details = () => {
             <Navbar />
             <section className={styles.container}>
                 <ProductDetails />
-                <Map items={items} />
+                <Map items={data} />
             </section>
         </div>
     )
