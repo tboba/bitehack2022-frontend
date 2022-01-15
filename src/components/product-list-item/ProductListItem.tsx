@@ -11,7 +11,7 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 import TimelapseOutlinedIcon from '@mui/icons-material/TimelapseOutlined';
 
 import styles from './ProductListItem.module.scss';
-import { Box } from '@mui/material';
+import {Box, Button} from '@mui/material';
 import { FC } from 'react';
 import { MapItem } from '../map/MapItem';
 
@@ -32,9 +32,10 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 
 interface ProductListItemProps {
   mapItem?: MapItem;
+  canBeDeleted?: boolean;
 }
 
-const ProductListItem: FC<ProductListItemProps> = () => {
+const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false }) => {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -81,6 +82,11 @@ const ProductListItem: FC<ProductListItemProps> = () => {
           <AccessTimeOutlinedIcon />&nbsp;2d
         </div>
       </CardActions>
+        {
+            canBeDeleted ? <div className={styles.deleteButton}>
+                <Button variant={"contained"} color={"error"}>Delete</Button>
+            </div> : null
+        }
     </Card >
   );
 }

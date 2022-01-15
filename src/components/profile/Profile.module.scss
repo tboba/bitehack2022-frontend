@@ -1,0 +1,23 @@
+.info {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.avatarIcon {
+    font-size: 100px !important;
+}
+
+.accountInfo {
+    place-self: start;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px 10px;
+    margin-left: 50px;
+    margin-top: 50px;
+    margin-right: 50px;
+}
+
