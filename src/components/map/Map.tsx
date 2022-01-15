@@ -2,8 +2,8 @@ import { FC } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import styles from './Map.module.scss';
-import {MapItem} from "./MapItem";
-import {Paper, Typography} from "@mui/material";
+import { MapItem } from "./MapItem";
+import { Paper, Typography } from "@mui/material";
 
 interface MarkerProps {
     item: MapItem;
@@ -15,7 +15,7 @@ interface MapProps {
     items: MapItem[];
 }
 
-const Marker: FC<MarkerProps> = ({item}) => {
+const Marker: FC<MarkerProps> = ({ item }) => {
     const defaultUrl: string = "https://a.allegroimg.com/original/11a642/3ff8b8b64645b4ea9d396943d88c/OSIOL-COLLECTA";
 
     return (
@@ -32,8 +32,6 @@ const Marker: FC<MarkerProps> = ({item}) => {
         </div>
     );
 }
-
-
 
 const Map: FC<MapProps> = ({ items }) => {
     // GET CURRENT LOCATION
@@ -57,18 +55,18 @@ const Map: FC<MapProps> = ({ items }) => {
     });
 
     return (
-      <div className={styles.mapContainer}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyAPjaMdeqXnLNpwS6uXha3duczlHZDIlT8' }}
-          defaultCenter={coordinates}
-          center={coordinates}
-          defaultZoom={14}
-          margin={[50, 50, 50, 50]}
-          options={{ disableDefaultUI: true, zoomControl: true }}
-        >
-            {mappedPlaces}
-        </GoogleMapReact>
-      </div>
+        <div className={styles.mapContainer}>
+            <GoogleMapReact
+                bootstrapURLKeys={{ key: 'AIzaSyAPjaMdeqXnLNpwS6uXha3duczlHZDIlT8' }}
+                defaultCenter={coordinates}
+                center={coordinates}
+                defaultZoom={14}
+                margin={[50, 50, 50, 50]}
+                options={{ disableDefaultUI: true, zoomControl: true }}
+            >
+                {mappedPlaces}
+            </GoogleMapReact>
+        </div>
     )
 }
 

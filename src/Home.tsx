@@ -5,7 +5,7 @@ import Map from './components/map/Map';
 import styles from './Home.module.scss';
 import { MapItem } from "./components/map/MapItem";
 
-const items: MapItem[] = [
+export const items: MapItem[] = [
     {
         id: 1,
         title: "1",
@@ -59,12 +59,12 @@ const items: MapItem[] = [
 const Home = () => {
     return (
         <div className="App">
-            <Navbar/>
+            <Navbar />
             <section className={styles.container}>
                 <ProductsList />
                 <Map items={items} />
             </section>
-         </div>
+        </div>
     )
 }
 
