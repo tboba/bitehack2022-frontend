@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
+import { Link as RouterLink } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Navbar from "../navbar/Navbar";
@@ -106,6 +107,7 @@ const SignIn = () => {
                                 fullWidth
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2 }}
+                                component={RouterLink} to={"/"}
                             >
                                 Sign In
                             </Button>
