@@ -15,6 +15,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import {Button, Grid} from "@mui/material";
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -185,6 +186,10 @@ export default function Navbar() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
+          <Grid container justifyContent="flex-end">
+            <Button color="inherit">Sign in</Button>
+            <Button color="inherit">Register</Button>
+          </Grid>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
