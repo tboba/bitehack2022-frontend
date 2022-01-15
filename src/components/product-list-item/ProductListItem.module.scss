@@ -1,0 +1,30 @@
+.badge {
+    background-color: rgb(228, 228, 228);
+    border-radius: 20px;
+    padding: 4px 8px 4px 6px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+
+    :global(.MuiSvgIcon-root) {
+        font-size: 14px;
+    }
+}
+
+.actionsContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleContainer {
+    text-align: left;
+    padding-bottom: 4px !important;
+}
+
+.descriptionContainer {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
