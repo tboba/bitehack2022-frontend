@@ -199,8 +199,8 @@ export default function Navbar() {
             />
           </Search>
           <Grid container justifyContent="flex-end" color={"inherit"}>
-            <Button component={RouterLink} to={"/signIn"} variant={"contained"} color={"primary"}>Sign in</Button>
-            <Button component={RouterLink} to={"/signIn"} variant={"contained"} color={"primary"}>Register</Button>
+            <Button component={RouterLink} to={"/signIn"} variant={"contained"} color={"primary"}>Sign in!</Button>
+            <Button component={RouterLink} to={"/signUp"} variant={"contained"} color={"primary"}>Sign up!</Button>
           </Grid>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
