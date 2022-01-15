@@ -44,7 +44,7 @@ const SignIn = () => {
     return (
         <ThemeProvider theme={theme}>
             <Navbar/>
-            <Grid container component="main" sx={{ height: '100vh' }}>
+            <Grid container component="main" sx={{ height: 'calc(100vh - 64px)' }}>
                 <CssBaseline />
                 <Grid
                     item
