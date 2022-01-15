@@ -1,0 +1,13 @@
+.productsListContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 15px;
+    margin: 16px;
+}
+
+.container {
+    margin: 16px 0;
+    overflow-y: scroll;
+    max-height: calc(100vh - 100px);
+}
