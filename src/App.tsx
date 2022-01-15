@@ -1,22 +1,18 @@
-import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
-  Link
-} from "react-router-dom";
+  Route} from "react-router-dom";
 
 import './App.css';
 import SignIn from "./components/login/SignIn";
-import Navbar from "./components/navbar/Navbar";
-import {Button} from "@mui/material";
+import Home from "./Home";
 
 const App = () => {
   return (
       <Router>
           <Routes>
             <Route path="/signIn" element={<SignIn/>}/>
-            <Route path="/" element={<Navbar/>}/>
+            <Route path="/" element={<Home />}/>
           </Routes>
       </Router>
   );
