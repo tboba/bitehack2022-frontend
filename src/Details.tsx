@@ -14,13 +14,11 @@ const Details = (props: any) => {
     const [postDetails, setDetails] = useState<MapItem>();
     // const posts = useAppSelector((state) => state.posts)
     // const dispatch = useAppDispatch()
-    console.warn(params.id)
 
     useEffect(() => {
         fetch(`http://localhost:8080/api/posts/${params.id}`)
             .then(res => res.json())
             .then(json => {
-                console.warn('test', json);
                 setDetails(json);
             });
     }, [])
@@ -29,7 +27,6 @@ const Details = (props: any) => {
         fetch(`http://localhost:8080/api/posts/${params.id}`)
             .then(res => res.json())
             .then(json => {
-                console.warn('test', json);
                 setDetails(json);
             });
     }

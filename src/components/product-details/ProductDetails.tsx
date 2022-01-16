@@ -58,8 +58,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ mapItem }) => {
         difference = Math.abs(firstDateInSeconds - secondDateInSeconds);
 
 
-    // console.warn(mapItem?.creationDate, mapItem?.expiryDate)
-    if (difference < 60) {
+    /*if (difference < 60) {
         console.warn(difference + ' seconds');
     } else if (difference < 3600) {
         console.warn(Math.floor(difference / 60) + ' minutes');
@@ -67,7 +66,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ mapItem }) => {
         console.warn(Math.floor(difference / 3600) + ' hours');
     } else {
         console.warn(Math.floor(difference / 86400) + ' days');
-    }
+    }*/
 
     const getDateDifference = () => {
         let firstDate = new Date(mapItem?.creationDate || ''),

@@ -41,7 +41,6 @@ const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapIt
     fetch(`http://localhost:8080/api/posts/${mapItem?.id}`, { method: "DELETE" })
       // .then(res => res.json())
       .then(json => {
-        console.warn('deleted', json);
         if (clickedTrigger) clickedTrigger();
       });
   }
@@ -67,7 +66,7 @@ const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapIt
 
 
   // console.warn(mapItem?.creationDate, mapItem?.expiryDate)
-  if (difference < 60) {
+  /*if (difference < 60) {
     console.warn(difference + ' seconds');
   } else if (difference < 3600) {
     console.warn(Math.floor(difference / 60) + ' minutes');
@@ -75,7 +74,7 @@ const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapIt
     console.warn(Math.floor(difference / 3600) + ' hours');
   } else {
     console.warn(Math.floor(difference / 86400) + ' days');
-  }
+  }*/
 
   const getDateDifference = () => {
     let firstDate = new Date(mapItem?.creationDate || ''),
@@ -117,8 +116,6 @@ const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapIt
     var d = R * c;
     return Math.floor(d * 1000);
   }
-
-  console.warn('rerender')
 
   return (
     <Card sx={{ maxWidth: 345 }}>

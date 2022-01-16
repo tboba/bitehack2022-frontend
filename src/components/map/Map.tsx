@@ -49,8 +49,6 @@ const Map: FC<MapProps> = ({ items, customCoords }) => {
     const [coordinates, setCoordinates] = useState(customCoords || { lat: 50.0680363, lng: 19.906108 })
     const posts = useAppSelector(state => state.posts.posts) || [];
     const markers = posts.map(post => post.location);
-    console.warn(markers);
-    console.warn('iii', customCoords)
 
 
 
@@ -58,12 +56,10 @@ const Map: FC<MapProps> = ({ items, customCoords }) => {
     // const markerCluster = new MarkerClusterer({ map, markers });
 
     if (!customCoords && navigator.geolocation) {
-        console.warn('aaa')
         navigator.geolocation.getCurrentPosition(pos => showPosition(pos));
     }
 
     function showPosition(position: any) {
-        console.warn('uuu', position.coords.latitude, position.coords.longitude)
         setCoordinates({ lat: position.coords.latitude, lng: position.coords.longitude })
     }
     const mappedPlaces = posts.map((item, index) => {

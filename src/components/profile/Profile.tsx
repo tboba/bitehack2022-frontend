@@ -16,7 +16,6 @@ const Profile = () => {
         fetch("http://localhost:8080/api/posts")
             .then(res => res.json())
             .then(json => {
-                console.warn('test', json);
                 return dispatch(fetchPosts(json.content))
             });
     }
