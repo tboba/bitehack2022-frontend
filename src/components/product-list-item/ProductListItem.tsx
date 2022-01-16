@@ -44,7 +44,7 @@ const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapIt
       return <Completionist />;
     } else {
       // Render a countdown
-      return <span>{days}d {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}</span>;
+      return <span>{days > 0 && `${days}d`} {zeroPad(hours)}:{zeroPad(minutes)}:{zeroPad(seconds)}</span>;
     }
   };
 

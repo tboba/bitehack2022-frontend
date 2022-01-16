@@ -30,7 +30,7 @@ const Details = (props: any) => {
             <Navbar />
             <section className={styles.container}>
                 <ProductDetails mapItem={postDetails} />
-                <Map items={data} />
+                <Map items={data} customCoords={{ lat: postDetails?.location.latitude || 0, lng: postDetails?.location.longitude || 0 }} />
             </section>
         </div>
     )
