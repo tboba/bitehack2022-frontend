@@ -18,7 +18,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import HomeIcon from '@mui/icons-material/Home';
 import { Button, Grid } from "@mui/material";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
 import styles from './Navbar.module.scss';
 
@@ -37,9 +37,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Navbar() {
+  let navigate = useNavigate();
+  let loggedInValue = localStorage.getItem('loggedIn')
+
+  console.warn('loggedIn', loggedInValue)
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
+
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -60,8 +65,11 @@ export default function Navbar() {
   const handleProfileClick = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
+  }
 
-
+  const onLogout = () => {
+    localStorage.setItem('loggedIn', "false");
+    navigate('/');
   }
 
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
@@ -164,24 +172,36 @@ export default function Navbar() {
               <AddCircleOutlineIcon className={styles.plusIcon} />
               Add post
             </Button>
-            <Button
-              component={RouterLink}
-              to={"/signIn"}
-              variant={"contained"}
-              color={"info"}
-              className={styles.signInButton}
-            >
-              Sign in
-            </Button>
-            <Button
-              component={RouterLink}
-              to={"/signUp"}
+            {loggedInValue === 'false' && (
+              <>
+                <Button
+                  component={RouterLink}
+                  to={"/signIn"}
+                  variant={"contained"}
+                  color={"info"}
+                  className={styles.signInButton}
+                >
+                  Sign in
+                </Button>
+                <Button
+                  component={RouterLink}
+                  to={"/signUp"}
+                  variant={"contained"}
+                  color={"secondary"}
+                  className={styles.signInButton}
+                >
+                  Sign up
+                </Button>
+              </>)
+            }
+            {loggedInValue === 'true' && <Button
               variant={"contained"}
               color={"secondary"}
               className={styles.signInButton}
+              onClick={onLogout}
             >
-              Sign up
-            </Button>
+              Logout
+            </Button>}
           </Grid>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

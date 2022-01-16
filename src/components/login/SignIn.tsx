@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 import Navbar from "../navbar/Navbar";
@@ -19,9 +19,17 @@ import Navbar from "../navbar/Navbar";
 const theme = createTheme();
 
 const SignIn = () => {
+    let navigate = useNavigate();
+
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
     };
+
+    const login = () => {
+        localStorage.setItem('loggedIn', "true");
+        navigate('/');
+    }
+
 
     return (
         <>
@@ -90,6 +98,7 @@ const SignIn = () => {
                                     variant="contained"
                                     sx={{ mt: 3, mb: 2 }}
                                     component={RouterLink} to={"/"}
+                                    onClick={login}
                                 >
                                     Sign In
                                 </Button>
