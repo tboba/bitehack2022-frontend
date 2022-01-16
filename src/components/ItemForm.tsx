@@ -39,20 +39,6 @@ const locations = [
     }
 ];
 
-
-function Copyright(props: any) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
-
 const theme = createTheme();
 
 export default function ItemForm() {
@@ -60,12 +46,11 @@ export default function ItemForm() {
     const [location, setLocation] = React.useState(locations[0].val);
 
     const mappedLocations = locations.map(location => {
-        return location.val;
+        return <MenuItem value={location.val}>{location.val}</MenuItem>;
     })
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
     };
 
     const handleCategoryChange = (event: any) => {
@@ -73,7 +58,6 @@ export default function ItemForm() {
     }
 
     const handleLocationChange = (event: any) => {
-        console.log(event);
         setLocation(event.target.value);
     }
 
@@ -129,10 +113,10 @@ export default function ItemForm() {
                                         value={category}
                                         onChange={handleCategoryChange}
                                     >
-                                        <MenuItem>Pieczywo</MenuItem>
-                                        <MenuItem>Przyprawy</MenuItem>
-                                        <MenuItem>Dania na ciepło</MenuItem>
-                                        <MenuItem>Dania do odgrzania</MenuItem>
+                                        <MenuItem value={"pieczywo"}>Pieczywo</MenuItem>
+                                        <MenuItem value={"przyprawy"}>Przyprawy</MenuItem>
+                                        <MenuItem value={"dania-na-cieplo"}>Dania na ciepło</MenuItem>
+                                        <MenuItem value={"dania-do-odgrzania"}>Dania do odgrzania</MenuItem>
                                     </Select>
                                 </FormControl>
                             </Grid>
@@ -162,7 +146,6 @@ export default function ItemForm() {
                         </Button>
                     </Box>
                 </Box>
-                <Copyright sx={{ mt: 5 }} />
             </Container>
         </ThemeProvider>
     );
