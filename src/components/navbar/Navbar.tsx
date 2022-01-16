@@ -172,7 +172,7 @@ export default function Navbar() {
               <AddCircleOutlineIcon className={styles.plusIcon} />
               Add post
             </Button>
-            {loggedInValue === 'false' && (
+            {!loggedInValue || loggedInValue === 'false' && (
               <>
                 <Button
                   component={RouterLink}
