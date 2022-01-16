@@ -162,7 +162,7 @@ export default function Navbar() {
               className={styles.signInButton}
             >
               <AddCircleOutlineIcon className={styles.plusIcon} />
-              Add product
+              Add post
             </Button>
             <Button
               component={RouterLink}
