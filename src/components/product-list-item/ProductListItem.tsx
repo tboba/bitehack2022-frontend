@@ -13,10 +13,8 @@ import { Box, Button } from '@mui/material';
 import { FC, useState } from 'react';
 import { MapItem } from '../map/MapItem';
 import Countdown, { zeroPad } from 'react-countdown';
+import { Link } from 'react-router-dom';
 
-interface ExpandMoreProps extends IconButtonProps {
-  expand: boolean;
-}
 
 interface ProductListItemProps {
   mapItem?: MapItem;
@@ -25,7 +23,7 @@ interface ProductListItemProps {
 
 const Completionist = () => <span>Expired</span>;
 
-interface TimeProps {
+export interface TimeProps {
   hours: number;
   minutes: number;
   seconds: number;
@@ -114,52 +112,54 @@ const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapIt
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <Box sx={{ position: 'relative' }}>
-        <CardMedia
-          component="img"
-          height="194"
-          image={mapItem?.imageUrl}
-          alt="Paella dish"
-        />
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            padding: '10px',
-            display: 'flex',
-            justifyContent: 'space-between'
-          }}
-        >
-          <div className={styles.badge} title={'Time left'}>
-            <TimelapseOutlinedIcon />&nbsp;<Countdown
-              date={mapItem?.expiryDate}
-              renderer={renderer}
-            />
-          </div>
+      <Link to={`/details/${mapItem && mapItem.id}`}>
+        <Box sx={{ position: 'relative' }}>
+          <CardMedia
+            component="img"
+            height="194"
+            image={mapItem?.imageUrl}
+            alt="Paella dish"
+          />
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              padding: '10px',
+              display: 'flex',
+              justifyContent: 'space-between'
+            }}
+          >
+            <div className={styles.badge} title={'Time left'}>
+              <TimelapseOutlinedIcon />&nbsp;<Countdown
+                date={mapItem?.expiryDate}
+                renderer={renderer}
+              />
+            </div>
+          </Box>
         </Box>
-      </Box>
-      <CardContent className={styles.titleContainer}>
-        <Typography variant="h6" component="div">
-          {mapItem?.title}
-        </Typography>
-        <Typography variant="body2" className={styles.descriptionContainer}>
-          {mapItem?.description}
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing className={styles.actionsContainer}>
-        <div className={styles.badge} title={"Distance from your location"}>
-          <LocationOnOutlinedIcon />&nbsp;{measureDistance(mapItem?.location?.latitude, mapItem?.location?.longitude, currentLatitude, currentLongitude)}m
-        </div>
-        <div className={styles.badge} title={'Time since added'}>
-          <AccessTimeOutlinedIcon />&nbsp;{getDateDifference()}
-        </div>
-      </CardActions>
-      {
-        canBeDeleted ? <div className={styles.deleteButton}>
-          <Button variant={"contained"} color={"error"}>Delete</Button>
-        </div> : null
-      }
+        <CardContent className={styles.titleContainer}>
+          <Typography variant="h6" component="div">
+            {mapItem?.title}
+          </Typography>
+          <Typography variant="body2" className={styles.descriptionContainer}>
+            {mapItem?.description}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing className={styles.actionsContainer}>
+          <div className={styles.badge} title={"Distance from your location"}>
+            <LocationOnOutlinedIcon />&nbsp;{measureDistance(mapItem?.location?.latitude, mapItem?.location?.longitude, currentLatitude, currentLongitude)}m
+          </div>
+          <div className={styles.badge} title={'Time since added'}>
+            <AccessTimeOutlinedIcon />&nbsp;{getDateDifference()}
+          </div>
+        </CardActions>
+        {
+          canBeDeleted ? <div className={styles.deleteButton}>
+            <Button variant={"contained"} color={"error"}>Delete</Button>
+          </div> : null
+        }
+      </Link>
     </Card >
   );
 }

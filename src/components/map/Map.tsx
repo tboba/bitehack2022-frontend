@@ -1,8 +1,8 @@
-import { FC } from 'react';
+import { createRef, FC, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import styles from './Map.module.scss';
-import { MapItem } from "./MapItem";
+import { MapItem, Location } from "./MapItem";
 import { Paper, Typography } from "@mui/material";
 import { useAppSelector } from '../../store/store-hooks';
 
@@ -22,7 +22,7 @@ const Marker: FC<MarkerProps> = ({ item }) => {
     return (
         <div className={styles.markerContainer} >
             <Paper elevation={3} className={styles.markerContent}>
-                <Typography variant={"subtitle1"} gutterBottom>
+                <Typography className={styles.markerTitle} variant={"subtitle1"} gutterBottom>
                     {item.title}
                 </Typography>
                 <img className={styles.markerImage}
@@ -36,8 +36,16 @@ const Marker: FC<MarkerProps> = ({ item }) => {
 
 const Map: FC<MapProps> = ({ items }) => {
     // GET CURRENT LOCATION
-    const coordinates = { lat: 52.40050890143135, lng: 16.909968708057384 };
+    // const coordinates = { lat: 50.0466814, lng: 19.8647899 };
+    const [coordinates, setCoordinates] = useState({ lat: 50.0680363, lng: 19.906108 })
     const posts = useAppSelector(state => state.posts.posts) || [];
+    const markers = posts.map(post => post.location);
+    console.warn(markers);
+
+
+
+    // use default algorithm and renderer
+    // const markerCluster = new MarkerClusterer({ map, markers });
 
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => showPosition(pos));
@@ -45,6 +53,7 @@ const Map: FC<MapProps> = ({ items }) => {
 
     function showPosition(position: any) {
         console.warn(position.coords.latitude, position.coords.longitude)
+        setCoordinates({ lat: position.coords.latitude, lng: position.cooords.longitude })
     }
 
     const mappedPlaces = posts.map((item) => {
@@ -60,6 +69,7 @@ const Map: FC<MapProps> = ({ items }) => {
     return (
         <div className={styles.mapContainer}>
             <GoogleMapReact
+                yesIWantToUseGoogleMapApiInternals
                 bootstrapURLKeys={{ key: 'AIzaSyAPjaMdeqXnLNpwS6uXha3duczlHZDIlT8' }}
                 defaultCenter={coordinates}
                 center={coordinates}
