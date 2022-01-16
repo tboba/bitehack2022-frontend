@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 interface ProductListItemProps {
   mapItem?: MapItem;
   canBeDeleted?: boolean;
+  clickedTrigger?: () => void;
 }
 
 const Completionist = () => <span>Expired</span>;
@@ -32,9 +33,18 @@ export interface TimeProps {
 }
 
 
-const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapItem }) => {
+const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapItem, clickedTrigger }) => {
   const [currentLatitude, setCurrentLatitude] = useState();
   const [currentLongitude, setCurrentLongitude] = useState();
+
+  const deleteItem = () => {
+    fetch(`http://localhost:8080/api/posts/${mapItem?.id}`, { method: "DELETE" })
+      // .then(res => res.json())
+      .then(json => {
+        console.warn('deleted', json);
+        if (clickedTrigger) clickedTrigger();
+      });
+  }
 
 
   const renderer = ({ days, hours, minutes, seconds, completed }: TimeProps) => {
@@ -154,12 +164,12 @@ const ProductListItem: FC<ProductListItemProps> = ({ canBeDeleted = false, mapIt
             <AccessTimeOutlinedIcon />&nbsp;{getDateDifference()}
           </div>
         </CardActions>
-        {
-          canBeDeleted ? <div className={styles.deleteButton}>
-            <Button variant={"contained"} color={"error"}>Delete</Button>
-          </div> : null
-        }
       </Link>
+      {
+        canBeDeleted ? <div className={styles.deleteButton}>
+          <Button variant={"contained"} color={"error"} onClick={() => deleteItem()}>Delete</Button>
+        </div> : null
+      }
     </Card >
   );
 }

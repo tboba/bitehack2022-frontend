@@ -25,6 +25,15 @@ const Details = (props: any) => {
             });
     }, [])
 
+    const getposts = () => {
+        fetch(`http://localhost:8080/api/posts/${params.id}`)
+            .then(res => res.json())
+            .then(json => {
+                console.warn('test', json);
+                setDetails(json);
+            });
+    }
+
     return (
         <div className="App">
             <Navbar />
