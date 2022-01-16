@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -11,8 +12,23 @@ import Details from "./Details";
 import Home from "./Home";
 import Profile from "./components/profile/Profile";
 import ItemForm from "./components/ItemForm";
+import { fetchPosts } from "./store/postsSlice";
+import { useAppDispatch, useAppSelector } from "./store/store-hooks";
 
 const App = () => {
+  const posts = useAppSelector((state) => state.posts)
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    fetch("http://localhost:8080/api/posts")
+      .then(res => res.json())
+      .then(json => {
+        console.warn('test', json);
+        return dispatch(fetchPosts(json.content))
+      });
+  }, [dispatch])
+
+  console.warn(posts);
   return (
     <Router>
       <Routes>

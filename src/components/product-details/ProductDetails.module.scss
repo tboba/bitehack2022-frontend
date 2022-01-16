@@ -33,6 +33,7 @@
 .actionsContainer {
     display: flex;
     justify-content: space-between;
+    margin-top: auto;
 }
 
 .titleContainer {
@@ -40,5 +41,41 @@
     padding-bottom: 4px !important;
 }
 
+.contactContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.title {
+    margin-bottom: 10px;
+    font-weight: 500 !important;
+}
+.card {
+    box-shadow: none !important;
+}
+
 .descriptionContainer {
+}
+
+.phoneNumber {
+    display: flex;
+    align-items: left;
+    margin-bottom: 10px;
+    span {
+        .phoneIcon {
+            margin-right: 8px;
+        }
+
+        .phoneText {
+            // margin-top: 1px;
+        }
+        color: #fff;
+        display: flex;
+        align-items: left;
+        padding: 10px 10px 8px 10px;
+        border-radius: 20px;
+        background-color: blue;
+    }
 }
