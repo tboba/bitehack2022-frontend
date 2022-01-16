@@ -1,12 +1,12 @@
-import {debounce, TextField} from '@mui/material';
-import {FC, useEffect, useState} from 'react';
-import {useAppDispatch, useAppSelector} from '../../store/store-hooks';
-import {MapItem} from '../map/MapItem';
+import { debounce, TextField } from '@mui/material';
+import { FC, useEffect, useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../../store/store-hooks';
+import { MapItem } from '../map/MapItem';
 import ProductListItem from '../product-list-item/ProductListItem';
 
 import styles from './ProductsList.module.scss';
 import axios from "axios";
-import {fetchPosts} from "../../store/postsSlice";
+import { fetchPosts } from "../../store/postsSlice";
 
 
 const ProductsList: FC = () => {
@@ -14,10 +14,10 @@ const ProductsList: FC = () => {
     const dispatch = useAppDispatch()
 
     const [searchTerm, setSearchTerm] = useState('')
-    const [debouncedTerm, setDebouncedTerm] = useState(searchTerm);
+    const [debouncedTerm, setDebouncedTerm] = useState('');
 
     const handleChange = (event: any) => {
-        setSearchTerm(event.target.value);
+        setDebouncedTerm(event.target.value);
     }
 
     /*useEffect(() => {
@@ -64,12 +64,12 @@ const ProductsList: FC = () => {
 
     return (
         <section className={styles.container}>
-            <TextField id="outlined-basic" label="Search" variant="outlined" value={searchTerm}
-                       onChange={handleChange}/>
+            <TextField id="outlined-basic" label="Search" variant="outlined" value={debouncedTerm}
+                onChange={handleChange} />
 
             <div className={styles.productsListContainer}>
 
-                {posts.map((post: MapItem) => <ProductListItem mapItem={post}/>)}
+                {debouncedTerm.length < 1 ? posts.map((post: MapItem) => <ProductListItem mapItem={post} />) : posts.filter(post => post.title.includes(debouncedTerm)).map((post: MapItem) => <ProductListItem mapItem={post} />)}
             </div>
         </section>
     );
