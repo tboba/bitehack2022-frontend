@@ -8,7 +8,8 @@ export interface MapItem {
     location: Location;
 }
 
-interface Location {
+export interface Location {
     latitude: number;
     longitude: number;
+    name?: string;
 }
