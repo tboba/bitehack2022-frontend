@@ -204,18 +204,20 @@ export default function Navbar() {
             </Button>}
           </Grid>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton
-              size="large"
-              edge="end"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-              component={RouterLink} to={"/profile/1"}
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
+          {loggedInValue === 'true' &&
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <IconButton
+                size="large"
+                edge="end"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+                component={RouterLink} to={"/profile/1"}
+              >
+                <AccountCircle />
+              </IconButton>
+            </Box>
+          }
 
         </Toolbar>
       </AppBar>
