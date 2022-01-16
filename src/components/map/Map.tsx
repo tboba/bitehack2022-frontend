@@ -4,6 +4,7 @@ import GoogleMapReact from 'google-map-react';
 import styles from './Map.module.scss';
 import { MapItem } from "./MapItem";
 import { Paper, Typography } from "@mui/material";
+import { useAppSelector } from '../../store/store-hooks';
 
 interface MarkerProps {
     item: MapItem;
@@ -36,6 +37,8 @@ const Marker: FC<MarkerProps> = ({ item }) => {
 const Map: FC<MapProps> = ({ items }) => {
     // GET CURRENT LOCATION
     const coordinates = { lat: 52.40050890143135, lng: 16.909968708057384 };
+    const posts = useAppSelector(state => state.posts.posts) || [];
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => showPosition(pos));
     }
@@ -44,7 +47,7 @@ const Map: FC<MapProps> = ({ items }) => {
         console.warn(position.coords.latitude, position.coords.longitude)
     }
 
-    const mappedPlaces = items.map((item) => {
+    const mappedPlaces = posts.map((item) => {
         return (
             <Marker
                 item={item}
