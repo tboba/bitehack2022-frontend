@@ -14,6 +14,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import HomeIcon from '@mui/icons-material/Home';
 import { Button, Grid } from "@mui/material";
@@ -153,8 +154,34 @@ export default function Navbar() {
           </RouterLink>
 
           <Grid container justifyContent="flex-end" color={"inherit"}>
-            <Button component={RouterLink} to={"/signIn"} variant={"contained"} color={"info"} className={styles.signInButton}>Sign in</Button>
-            <Button component={RouterLink} to={"/signUp"} variant={"contained"} color={"secondary"} className={styles.signInButton}>Sign up</Button>
+            <Button
+                component={RouterLink}
+                to={"/profile/1/addProduct"}
+                variant={"contained"}
+                color={"warning"}
+                className={styles.signInButton}
+            >
+              <AddCircleOutlineIcon />
+              Add product
+            </Button>
+            <Button
+                component={RouterLink}
+                to={"/signIn"}
+                variant={"contained"}
+                color={"info"}
+                className={styles.signInButton}
+            >
+              Sign in
+            </Button>
+            <Button
+                component={RouterLink}
+                to={"/signUp"}
+                variant={"contained"}
+                color={"secondary"}
+                className={styles.signInButton}
+            >
+              Sign up
+            </Button>
           </Grid>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>

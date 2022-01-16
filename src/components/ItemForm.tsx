@@ -42,8 +42,8 @@ const locations = [
 const theme = createTheme();
 
 export default function ItemForm() {
-    const [category, setCategory] = React.useState("pieczywo");
-    const [location, setLocation] = React.useState(locations[0].val);
+    const [category, setCategory] = React.useState("");
+    const [location, setLocation] = React.useState("");
 
     const mappedLocations = locations.map(location => {
         return <MenuItem value={location.val}>{location.val}</MenuItem>;
@@ -140,7 +140,7 @@ export default function ItemForm() {
                             fullWidth
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
-                            component={RouterLink} to={"/"}
+                            component={RouterLink} to={"/profile/1"}
                         >
                             Add product
                         </Button>
