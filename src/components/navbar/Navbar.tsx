@@ -16,34 +16,10 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import HomeIcon from '@mui/icons-material/Home';
-import {Button, Grid} from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 
-const Search = styled('div')(({ theme }) => ({
-  position: 'relative',
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  '&:hover': {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: '100%',
-  [theme.breakpoints.up('sm')]: {
-    marginLeft: theme.spacing(3),
-    width: 'auto',
-  },
-}));
-
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
+import styles from './Navbar.module.scss';
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -167,62 +143,21 @@ export default function Navbar() {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
+
+          <RouterLink
+            className={styles.logo}
             aria-label="open drawer"
-            sx={{ mr: 2 }}
+            to={"/"}
           >
-            <MenuIcon />
-          </IconButton>
-          <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-              component={RouterLink} to={"/"}
-          >
-            <HomeIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            KRYSTIAN BYK
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+            BITEShare
+          </RouterLink>
+
           <Grid container justifyContent="flex-end" color={"inherit"}>
-            <Button component={RouterLink} to={"/signIn"} variant={"contained"} color={"primary"}>Sign in!</Button>
-            <Button component={RouterLink} to={"/signUp"} variant={"contained"} color={"primary"}>Sign up!</Button>
+            <Button component={RouterLink} to={"/signIn"} variant={"contained"} color={"info"} className={styles.signInButton}>Sign in</Button>
+            <Button component={RouterLink} to={"/signUp"} variant={"contained"} color={"secondary"} className={styles.signInButton}>Sign up</Button>
           </Grid>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
             <IconButton
                 size="large"
                 edge="end"
@@ -239,6 +174,6 @@ export default function Navbar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
-    </Box>
+    </Box >
   );
 }

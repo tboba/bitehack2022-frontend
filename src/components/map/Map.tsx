@@ -1,8 +1,8 @@
-import { createRef, FC, useState } from 'react';
+import { FC, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 
 import styles from './Map.module.scss';
-import { MapItem, Location } from "./MapItem";
+import { MapItem } from "./MapItem";
 import { Paper, Typography } from "@mui/material";
 import { useAppSelector } from '../../store/store-hooks';
 
@@ -55,7 +55,6 @@ const Map: FC<MapProps> = ({ items }) => {
         console.warn(position.coords.latitude, position.coords.longitude)
         setCoordinates({ lat: position.coords.latitude, lng: position.cooords.longitude })
     }
-
     const mappedPlaces = posts.map((item) => {
         return (
             <Marker
