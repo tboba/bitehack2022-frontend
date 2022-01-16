@@ -64,7 +64,7 @@ const Map: FC<MapProps> = ({ items, customCoords }) => {
 
     function showPosition(position: any) {
         console.warn('uuu', position.coords.latitude, position.coords.longitude)
-        setCoordinates({ lat: position.coords.latitude, lng: position.cooords.longitude })
+        setCoordinates({ lat: position.coords.latitude, lng: position.coords.longitude })
     }
     const mappedPlaces = posts.map((item, index) => {
         return (
