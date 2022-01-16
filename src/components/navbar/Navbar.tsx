@@ -80,6 +80,13 @@ export default function Navbar() {
     handleMobileMenuClose();
   };
 
+  const handleProfileClick = () => {
+    setAnchorEl(null);
+    handleMobileMenuClose();
+
+
+  }
+
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
@@ -101,8 +108,6 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
   );
 
@@ -143,17 +148,17 @@ export default function Navbar() {
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem>
         <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="open drawer"
+            sx={{ mr: 2 }}
+            component={RouterLink} to={"/profile/1"}
         >
-          <AccountCircle />
+          <HomeIcon />
         </IconButton>
-        <p>Profile</p>
       </MenuItem>
     </Menu>
   );
@@ -219,29 +224,17 @@ export default function Navbar() {
               </Badge>
             </IconButton>
             <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
+                size="large"
+                edge="end"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+                component={RouterLink} to={"/profile/1"}
             >
               <AccountCircle />
             </IconButton>
           </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
+
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

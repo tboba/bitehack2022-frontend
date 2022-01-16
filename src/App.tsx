@@ -11,6 +11,7 @@ import SignUp from "./components/registration/SignUp";
 import Details from "./Details";
 import Home from "./Home";
 import Profile from "./components/profile/Profile";
+import ItemForm from "./components/ItemForm";
 import { fetchPosts } from "./store/postsSlice";
 import { useAppDispatch, useAppSelector } from "./store/store-hooks";
 
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/details/:id" element={<Details />} />
         <Route path="/profile/:id" element={<Profile />} />
+        <Route path="/profile/:id/addProduct" element={<ItemForm />} />
         <Route path="/" element={<Home />} />
       </Routes>
     </Router>
