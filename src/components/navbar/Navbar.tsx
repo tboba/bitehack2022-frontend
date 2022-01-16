@@ -127,12 +127,12 @@ export default function Navbar() {
       </MenuItem>
       <MenuItem>
         <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-            component={RouterLink} to={"/profile/1"}
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="open drawer"
+          sx={{ mr: 2 }}
+          component={RouterLink} to={"/profile/1"}
         >
           <HomeIcon />
         </IconButton>
@@ -155,30 +155,30 @@ export default function Navbar() {
 
           <Grid container justifyContent="flex-end" color={"inherit"}>
             <Button
-                component={RouterLink}
-                to={"/profile/1/addProduct"}
-                variant={"contained"}
-                color={"warning"}
-                className={styles.signInButton}
+              component={RouterLink}
+              to={"/profile/1/addProduct"}
+              variant={"contained"}
+              color={"warning"}
+              className={styles.signInButton}
             >
-              <AddCircleOutlineIcon />
+              <AddCircleOutlineIcon className={styles.plusIcon} />
               Add product
             </Button>
             <Button
-                component={RouterLink}
-                to={"/signIn"}
-                variant={"contained"}
-                color={"info"}
-                className={styles.signInButton}
+              component={RouterLink}
+              to={"/signIn"}
+              variant={"contained"}
+              color={"info"}
+              className={styles.signInButton}
             >
               Sign in
             </Button>
             <Button
-                component={RouterLink}
-                to={"/signUp"}
-                variant={"contained"}
-                color={"secondary"}
-                className={styles.signInButton}
+              component={RouterLink}
+              to={"/signUp"}
+              variant={"contained"}
+              color={"secondary"}
+              className={styles.signInButton}
             >
               Sign up
             </Button>
@@ -186,12 +186,12 @@ export default function Navbar() {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton
-                size="large"
-                edge="end"
-                color="inherit"
-                aria-label="open drawer"
-                sx={{ mr: 2 }}
-                component={RouterLink} to={"/profile/1"}
+              size="large"
+              edge="end"
+              color="inherit"
+              aria-label="open drawer"
+              sx={{ mr: 2 }}
+              component={RouterLink} to={"/profile/1"}
             >
               <AccountCircle />
             </IconButton>
